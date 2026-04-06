@@ -4,33 +4,35 @@ import Card from './components/Cards/Card.jsx';
 import { getCountries, pageCountries, totalPages } from './services/CountriesApiService';
 
 function App() {
-  const [status, setStatus] = useState(false);
   const [paises, setPaises] = useState([]);
   const [pagina, setPagina]= useState(1);
 
-  
-  const cambio =()=> {
-    if (status) {
-      setStatus(false);
-    }else{
-      setStatus(true)
-    }
-  }
+
   useEffect(() => {
     const cargarPaises = async () => {
-      const resultado = await getCountries();
-      setPaises(resultado);
-    };
-    
-    cargarPaises();
-  }, [status]);
+      try {
+        const resultado = await getCountries();
+        alert('Cargando datos')
+        setPaises(resultado);}
+      catch(error){
+        const data ={
+        mensaje:"Hubo error al cargar los paises",
+        data: error
+        }
+        console.log(data)
+        alert(data.mensaje)
+        }
+  };
+  
+  cargarPaises();
+}, []);
   
   let paisesPagina=pageCountries(paises,pagina);
 
   return (
     <section className='seccionPrincipal'>
       <div className='Botones'>
-        <button className='btn' onClick={cambio}>Country card</button>
+        <button className='btn' onClick={getCountries}>Paises</button>
         <button className='btn' onClick={() => {setPagina(pagina - 1)}} disabled={pagina===1} >Anterior</button>
         <button className='btn' onClick={() => {setPagina(pagina + 1)}}
           disabled ={pagina>totalPages(paises)}>Siguiente</button> 

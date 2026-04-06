@@ -20,11 +20,11 @@ export const getCountries = async ()=>{
     }
     catch(error){
         const data ={
-        mensaje:"Hubo error",
+        mensaje:"Error con la API",
         data: error
     }
-     console.log(data)
-     
+    console.log(data)
+    alert(data.mensaje)
     }
 }
 export const pageCountries = (paises, pagina, paisesPorPagina = 12) => {
