@@ -1,0 +1,33 @@
+.seccionPrincipal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.Tarjetas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.btn{
+    width: 100px;
+    height: 50px;
+    background: seagreen;
+    color: aliceblue;
+    margin: 10px;
+    border-radius: 10px;
+}
+.btn:hover{
+    background: aliceblue;
+    color: seagreen;
+    scale: 1.2;
+}

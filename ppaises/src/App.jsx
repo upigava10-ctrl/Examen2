@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import './App.css';
 import Card from './components/Cards/Card.jsx';
-import { getCountries } from './services/CountriesApiService';
+import { getCountries, pageCountries, totalPages } from './services/CountriesApiService';
 
 function App() {
   const [status, setStatus] = useState(false);
   const [paises, setPaises] = useState([]);
+  const [pagina, setPagina]= useState(1);
 
+  
   const cambio =()=> {
     if (status) {
       setStatus(false);
@@ -18,28 +20,30 @@ function App() {
     const cargarPaises = async () => {
       const resultado = await getCountries();
       setPaises(resultado);
-      console.log(resultado[0])
-      console.log(status)
     };
     
     cargarPaises();
   }, [status]);
- 
+  
+  let paisesPagina=pageCountries(paises,pagina);
 
   return (
-    <>
-      <button onClick={cambio}>Country card</button>
-      {paises.map((pais,index)=>{
-        return <Card  key={index} country={pais}/>
-          }
-        )
-      }
+    <section className='seccionPrincipal'>
+      <div className='Botones'>
+        <button className='btn' onClick={cambio}>Country card</button>
+        <button className='btn' onClick={() => {setPagina(pagina - 1)}} disabled={pagina===1} >Anterior</button>
+        <button className='btn' onClick={() => {setPagina(pagina + 1)}}
+          disabled ={pagina>totalPages(paises)}>Siguiente</button> 
+      </div>
 
-      {/* paisesPagina.map(getCountries => <div key={pais.cca3}>{pais.name.common}</div>) */}
-{/*   
-      <button onClick={() => setPagina(pagina - 1)} disabled={pagina === 1}>Anterior</button>
-      <button onClick={() => setPagina(pagina + 1)} disabled={pagina * itemsPorPagina >= allPaises.length}>Siguiente</button> */}
-    </>
+      <div className='Tarjetas'>
+        {paisesPagina.map((pais,index)=>{
+          return <Card  key={index} country={pais}/>
+            }
+          )
+        }
+      </div>
+    </section>
     
     
   )

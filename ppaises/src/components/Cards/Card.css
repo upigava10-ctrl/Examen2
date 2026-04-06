@@ -1,4 +1,4 @@
-.btn{
+.card{
     width: 200px;
     height: 350px;
     border: none;
@@ -11,7 +11,7 @@
     justify-content: center;
 
 }
-.btn:hover{
+.card:hover{
     cursor: pointer;
     border-radius: 5px;
     background: navy;

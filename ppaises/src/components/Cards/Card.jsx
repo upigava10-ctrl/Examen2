@@ -12,7 +12,7 @@ const Card = ({country, method}) => {
     };
     const getCurrencySymbol = (currencies) => {
         if (Object.keys(currencies).length >0) {
-            console.log(Object.values(country.currencies)[0].symbol)
+            // console.log(Object.values(country.currencies)[0].symbol)
             return Object.values(currencies)[0].symbol;
         }else{ 
             return "No definida"
@@ -20,7 +20,7 @@ const Card = ({country, method}) => {
     };
     
     return (
-        <button onClick={method} className='btn'>
+        <button onClick={method} className='card'>
             <h3>Nombre Común:</h3>
             <p>{country.name.common}</p>
             

@@ -15,7 +15,7 @@ export const getCountries = async ()=>{
 
     console.log(data);
     // console.log(Array.isArray(response.data))
-    console.log(response.data.length)
+    // console.log(response.data.length)
     return response.data
     }
     catch(error){
