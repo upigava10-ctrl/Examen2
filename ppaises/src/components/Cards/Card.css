@@ -1,0 +1,18 @@
+.btn{
+    width: 120px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background: antiquewhite;
+    color: navy;
+    margin: 5px;
+
+}
+.btn:hover{
+    cursor: pointer;
+    border-radius: 10px;
+    background: navy;
+    color: antiquewhite;
+    scale: 1.2;
+
+}
